@@ -1,4 +1,7 @@
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import supabase from "@/lib/db";
+import Image from "next/image";
 import type { IMenu } from "@/types/menu";
 import { useEffect, useState } from "react";
 
@@ -22,18 +25,38 @@ export default function Home() {
     };
 
     fetchMenus();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [supabase]);
 
   return (
-    <div>
-      <h1>Menus</h1>
-      <ul>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-4">Menu</h1>
+
+      <div className="grid lg:grid-cols-3 gap-4">
         {menus.map((menu) => (
-          <li key={menu.id}>
-            {menu.name} - {menu.price}
-          </li>
+          <Card key={menu.id}>
+            <CardContent>
+              <Image
+                src={menu.image}
+                alt={menu.name}
+                width={500}
+                height={300}
+                className="w-full h-[30vh] object-cover rounded-lg"
+              />
+              <div className="mt-4 flex justify-between">
+                <div>
+                  <h4 className="font-semibold text-xl">{menu.name}</h4>
+                  <p>{menu.category}</p>
+                </div>
+                <p className="font font-semibold text-2xl">${menu.price}</p>
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button className="w-full size-lg font-bold">Beli ga lu?!</Button>
+            </CardFooter>
+          </Card>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
