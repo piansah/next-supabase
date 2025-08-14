@@ -4,6 +4,7 @@ import supabase from "@/lib/db";
 import Image from "next/image";
 import type { IMenu } from "@/types/menu";
 import { useEffect, useState } from "react";
+import Link from "next/dist/client/link";
 
 export default function Home() {
   const [menus, setMenus] = useState<IMenu[]>([]);
@@ -52,7 +53,9 @@ export default function Home() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button className="w-full size-lg font-bold">Beli ga lu?!</Button>
+             <Link href={`/menu/${menu.id}`} className="w-full">
+               <Button className="w-full size-lg font-bold">Beli ga lu?!</Button>
+             </Link>
             </CardFooter>
           </Card>
         ))}
