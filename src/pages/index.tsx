@@ -54,7 +54,7 @@ export default function Home() {
             </CardContent>
             <CardFooter>
              <Link href={`/menu/${menu.id}`} className="w-full">
-               <Button className="w-full size-lg font-bold">Beli ga lu?!</Button>
+               <Button className="w-full size-lg font-bold">Mau liat?</Button>
              </Link>
             </CardFooter>
           </Card>
