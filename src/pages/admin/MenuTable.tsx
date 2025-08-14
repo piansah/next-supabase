@@ -10,9 +10,17 @@ import { IMenu } from "@/types/menu";
 
 interface MenuTableProps {
   menus: IMenu[];
+  setSelectedMenu: (menu: IMenu) => void;
+  setDeleteDialog: (open: boolean) => void;
+  setUpdateDialog: (open: boolean) => void;
 }
 
-export default function MenuTable({ menus }: MenuTableProps) {
+export default function MenuTable({
+  menus,
+  setSelectedMenu,
+  setDeleteDialog,
+  setUpdateDialog,
+}: MenuTableProps) {
   return (
     <Table>
       <TableHeader>
@@ -26,7 +34,13 @@ export default function MenuTable({ menus }: MenuTableProps) {
       </TableHeader>
       <TableBody>
         {menus.map((menu) => (
-          <MenuTableRow key={menu.id} menu={menu} />
+          <MenuTableRow
+            key={menu.id}
+            menu={menu}
+            setSelectedMenu={setSelectedMenu}
+            setDeleteDialog={setDeleteDialog}
+            setUpdateDialog={setUpdateDialog}
+          />
         ))}
       </TableBody>
     </Table>

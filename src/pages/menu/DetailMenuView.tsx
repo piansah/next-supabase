@@ -18,7 +18,7 @@ export default function DetailMenuView({ menu }: Props) {
         <div className="flex gap-4 items-center">
           <p className="text-4xl font-bold">${menu.price}</p>
           <Button className="text-lg py-6 font-bold size-lg bg-white text-black hover:bg-gray-200">
-            Beli ga lu?!
+            Buy Now
           </Button>
         </div>
       </div>

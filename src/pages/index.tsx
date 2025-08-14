@@ -5,6 +5,7 @@ import Image from "next/image";
 import type { IMenu } from "@/types/menu";
 import { useEffect, useState } from "react";
 import Link from "next/dist/client/link";
+import Head from "next/dist/shared/lib/head";
 
 export default function Home() {
   const [menus, setMenus] = useState<IMenu[]>([]);
@@ -31,6 +32,9 @@ export default function Home() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Head>
+        <title>Home</title>
+      </Head>
       <h1 className="text-3xl font-bold mb-4">Menu</h1>
 
       <div className="grid lg:grid-cols-3 gap-4">
@@ -53,9 +57,11 @@ export default function Home() {
               </div>
             </CardContent>
             <CardFooter>
-             <Link href={`/menu/${menu.id}`} className="w-full">
-               <Button className="w-full size-lg font-bold">Mau liat?</Button>
-             </Link>
+              <Link href={`/menu/${menu.id}`} className="w-full">
+                <Button className="w-full size-lg font-bold">
+                  View Details
+                </Button>
+              </Link>
             </CardFooter>
           </Card>
         ))}

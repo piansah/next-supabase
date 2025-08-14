@@ -5,9 +5,17 @@ import MenuDropdown from "./MenuDropdown";
 
 interface MenuTableRowProps {
   menu: IMenu;
+  setSelectedMenu: (menu: IMenu) => void;
+  setDeleteDialog: (open: boolean) => void;
+  setUpdateDialog: (open: boolean) => void;
 }
 
-export default function MenuTableRow({ menu }: MenuTableRowProps) {
+export default function MenuTableRow({
+  menu,
+  setSelectedMenu,
+  setDeleteDialog,
+  setUpdateDialog,
+}: MenuTableRowProps) {
   return (
     <TableRow>
       <TableCell className="flex gap-3 items-center w-full">
@@ -26,7 +34,17 @@ export default function MenuTableRow({ menu }: MenuTableRowProps) {
       <TableCell>{menu.category}</TableCell>
       <TableCell>${menu.price}.00</TableCell>
       <TableCell>
-        <MenuDropdown />
+        <MenuDropdown
+          menu={menu}
+          onUpdateClick={(m) => {
+            setSelectedMenu(m);
+            setUpdateDialog(true);
+          }}
+          onDeleteClick={(m) => {
+            setSelectedMenu(m);
+            setDeleteDialog(true);
+          }}
+        />
       </TableCell>
     </TableRow>
   );

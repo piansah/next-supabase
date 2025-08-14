@@ -7,9 +7,11 @@ const nextConfig: NextConfig = {
       "miro.medium.com",
       "tastecooking.com",
       "scrumptiously.com",
-      "api.omela.com"
-    ]
-  }
+      "api.omela.com",
+      "cornercoffeestore.com",
+      "nibble-images.b-cdn.net",
+    ],
+  },
 };
 
 export default nextConfig;

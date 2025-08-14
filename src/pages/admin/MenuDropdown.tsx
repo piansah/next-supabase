@@ -8,8 +8,19 @@ import {
   DropdownMenuTrigger,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+import { IMenu } from "@/types/menu";
 
-export default function MenuDropdown() {
+interface MenuDropdownProps {
+  menu: IMenu;
+  onDeleteClick: (menu: IMenu) => void;
+  onUpdateClick: (menu: IMenu) => void;
+}
+
+export default function MenuDropdown({
+  menu,
+  onDeleteClick,
+  onUpdateClick,
+}: MenuDropdownProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="cursor-pointer">
@@ -19,8 +30,15 @@ export default function MenuDropdown() {
         <DropdownMenuLabel className="font-bold">Actions</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>Update</DropdownMenuItem>
-          <DropdownMenuItem className="text-red-400">Delete</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => onUpdateClick(menu)}>
+            Update
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => onDeleteClick(menu)}
+            className="text-red-400"
+          >
+            Delete
+          </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
